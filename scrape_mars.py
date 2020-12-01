@@ -1,14 +1,18 @@
 import time
 from bs4 import BeautifulSoup
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 from splinter import Browser
 
 
-def scrape_info():
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+#def init_browser():
+   # executable_path = {'executable_path': ChromeDriverManager().install()}
+    #return Browser('chrome', **executable_path, headless=False)
+   # return browser
 
+def scrape_info():
+    
+    browser = Browser('chrome')
     mars = {}
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
@@ -24,7 +28,7 @@ def scrape_info():
     news_p = soup.find("div", class_="article_teaser_body").text
     print(news_title)
     print(news_p)
-    mars["new_title"]= news_title
+    mars["news_title"]= news_title
     mars["news_p"]= news_p
 
 
@@ -34,8 +38,7 @@ def scrape_info():
     jpl_image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(jpl_image_url)
 
-    html = browser.html
-    jpl_soup = BeautifulSoup(html, 'html.parser')
+    
 
     main_url = "https://www.jpl.nasa.gov"
     jpl_image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
@@ -101,4 +104,7 @@ def scrape_info():
     browser.quit()
 
     # Return results
-    return hem
+    return mars
+
+if __name__ == "__main__":
+    print(scrape_info())    
