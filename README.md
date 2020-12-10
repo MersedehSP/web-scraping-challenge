@@ -36,7 +36,7 @@ app.py has a route called `/scrape` that will import the  `scrape_mars.py` scrip
 
 template HTML file called `index.html`  will take the mars data dictionary and display all of the data in the appropriate HTML elements.
 
-here is how the final product looks like: (this will change each time you run the app)
+here is how the final product looks like: (the featured image of course will change each time you run the app)
 
 ![title.JPG](Missions_to_Mars/title.JPG)
 
